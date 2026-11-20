@@ -1,4 +1,4 @@
 pub use content::content_declarations::{
     Block, BlockProperties, BlockShapes, BlockStateProperty, Item, PushReaction, RandomTicks,
-    Rarity, RenderShape, ShapeEntityKind, StateLight,
+    Rarity, RenderShape, ShapeEntityKind, StateLight, VanillaBlockShapes, VanillaShape,
 };
