@@ -2104,7 +2104,10 @@ capabilities = ["registries"]
         let [shapes] = content.vanilla_shapes.as_slice() else {
             panic!("{:?}", content.vanilla_shapes)
         };
-        assert_eq!(shapes.blocks, ["minecraft:oak_fence", "minecraft:stone_wall"]);
+        assert_eq!(
+            shapes.blocks,
+            ["minecraft:oak_fence", "minecraft:stone_wall"]
+        );
         assert_eq!(
             shapes.collision_context_shapes[&ShapeEntityKind::Player],
             VanillaShape::Clip([0.0, 0.0, 0.0, 1.0, 1.0, 1.0])
