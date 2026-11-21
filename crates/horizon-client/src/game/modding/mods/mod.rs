@@ -293,7 +293,10 @@ struct NativeDeclared {
     types: Vec<horizon_mod_package::content::BlockEntityType>,
     fluids: Vec<horizon_mod_package::content::FluidLook>,
     /// Vanilla block shapes from code, each with the mod that declared it.
-    vanilla_shapes: Vec<(&'static str, horizon_mod_package::content::VanillaBlockShapes)>,
+    vanilla_shapes: Vec<(
+        &'static str,
+        horizon_mod_package::content::VanillaBlockShapes,
+    )>,
 }
 
 /// The same native declarations serve startup and every pack reload.
@@ -897,8 +900,7 @@ pub(super) fn content_overlay(
     if !vanilla_shapes.is_empty() {
         let errors = mod_content::accept_vanilla_shapes(&mut mods, vanilla_shapes);
         if !errors.is_empty() {
-            return Err(errors.join("
-").into());
+            return Err(errors.join("\n").into());
         }
     }
     // Content validation may refuse a package. Revalidate against what really

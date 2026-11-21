@@ -810,7 +810,10 @@ fn vanilla_contexts(
             }
         };
         for (state, shape) in states.zip(resolved) {
-            contexts.entry(state).or_default().insert(key.clone(), shape);
+            contexts
+                .entry(state)
+                .or_default()
+                .insert(key.clone(), shape);
         }
     }
     Ok((contexts, warnings))

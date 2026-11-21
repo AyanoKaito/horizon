@@ -4182,7 +4182,10 @@ fn vanilla_block_shapes_reach_vanilla_states_and_the_first_mod_keeps_a_claim() {
     for row in [x, y] {
         let outline = row["outline_player"].bounds().unwrap();
         assert_eq!((outline.min(Axis::X), outline.max(Axis::Y)), (0.25, 1.0));
-        assert!(row["collision_item"].is_empty(), "beta keeps the item class");
+        assert!(
+            row["collision_item"].is_empty(),
+            "beta keeps the item class"
+        );
     }
     assert_eq!(x["collision_player"].bounds().unwrap().max(Axis::Y), 0.5);
     assert!(y["collision_player"].is_empty());
@@ -4207,10 +4210,7 @@ fn vanilla_block_shapes_reach_vanilla_states_and_the_first_mod_keeps_a_claim() {
     let Some(Tag::Int(id)) = rows[0].get("collision_player") else {
         panic!("collision_player")
     };
-    assert_eq!(
-        entries[*id as usize],
-        encode_shape(&x["collision_player"])
-    );
+    assert_eq!(entries[*id as usize], encode_shape(&x["collision_player"]));
     fs::remove_dir_all(scratch).unwrap();
 }
 
